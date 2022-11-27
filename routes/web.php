@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GoodsController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,7 @@ Route::get('/', [IndexController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('goods', GoodsController::class)->parameters([
+    'goods' => 'goods'
+]);
