@@ -17,6 +17,7 @@ class GoodsFactory extends Factory
     public function definition()
     {
         return [
+            'image' => $this->faker->imageUrl,
             'name' => $this->faker->word,
             'price' => $this->faker->randomFloat(2, 1, 999),
             'stock' => $this->faker->numberBetween(1, 999),

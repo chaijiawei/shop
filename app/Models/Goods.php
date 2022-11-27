@@ -10,6 +10,7 @@ class Goods extends Model
     use HasFactory;
 
     protected $fillable = [
+        'image',
         'name',
         'price',
         'stock',
