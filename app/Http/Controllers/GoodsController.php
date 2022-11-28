@@ -13,4 +13,9 @@ class GoodsController extends Controller
 
         return view('goods.index', compact('goodsList'));
     }
+
+    public function show(Goods $goods)
+    {
+        return view('goods.show', compact('goods'));
+    }
 }

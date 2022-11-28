@@ -7,14 +7,15 @@
     <ul class="list-group list-group-flush">
         @foreach($goodsList as $goods)
         <li class="list-group-item">
-            <img class="mb-2" width="64" src="{{ $goods->image }}" alt="{{ $goods->name }}">
-            <h4>{{ $goods->name }}</h4>
-            <div>
-                &yen; {{ $goods->price }}
-            </div>
-            <div>
-                库存：{{ $goods->stock }}
-            </div>
+            <a href="{{ route('goods.show', $goods) }}">
+                <img class="mb-2" width="64" src="{{ $goods->image }}" alt="{{ $goods->name }}"> <h4>{{ $goods->name }}</h4>
+                <div>
+                    &yen; {{ $goods->price }}
+                </div>
+                <div>
+                    库存：{{ $goods->stock }}
+                </div>
+            </a>
         </li>
         @endforeach
     </ul>

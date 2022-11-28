@@ -14,5 +14,6 @@ class Goods extends Model
         'name',
         'price',
         'stock',
+        'content',
     ];
 }
