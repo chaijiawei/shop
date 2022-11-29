@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GoodsController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('goods', GoodsController::class)->parameters([
     'goods' => 'goods'
 ]);
+
+Route::resource('orders', OrderController::class);
