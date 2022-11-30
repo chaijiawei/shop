@@ -11,17 +11,28 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $goods->name }}</h5>
-                    <p class="card-text">
-                        &yen; {{ $goods->price }}
-                    </p>
-                    <p class="card-text">
-                        库存：{{ $goods->stock }}
-                    </p>
-                   
-                    <div>
-                        <button type="button" class="btn btn-success">立即购买</button>
-                    </div>
+                    <form action="{{ route('orders.store') }}" method="post">
+                        @csrf
+
+                        <h5 class="card-title">{{ $goods->name }}</h5>
+                        <p class="card-text">
+                            &yen; {{ $goods->price }}
+                        </p>
+                        <p class="card-text">
+                            库存：{{ $goods->stock }}
+                        </p>
+                        
+                        <div class="mb-3">
+                            <label for="buy_number" class="form-label">购买数量</label>
+                            <input type="text" class="form-control" name="buy_number" id="buy_number">
+                        </div>
+
+                        <input type="hidden" name="goods_id" value="{{ $goods->id }}">
+
+                        <div>
+                            <button type="submit" class="btn btn-success">立即购买</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

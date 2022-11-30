@@ -13,6 +13,7 @@ class Order extends Model
         'goods_snapshot',
         'total_price',
         'total_buy_number',
+        'goods_id',
     ];
 
     protected $casts = [
