@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\OrderException;
 use App\Models\Goods;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -34,14 +35,14 @@ class OrderController extends Controller
         $data = $this->validate($request, [
             'goods_id' => 'required|integer',
             'buy_number' => 'required|integer|min:1',
-        ]);
+        ], [], ['buy_number' => '购买数量']);
         $user = Auth::user();
         $goods = Goods::findOrFail($data['goods_id']);
 
         DB::transaction(function() use($data, $order, $user, $goods) {
             //判断库存
             if($data['buy_number'] > $goods['stock']) {
-                abort(500, '您购买的商品库存不足');
+                throw new OrderException('您购买的商品库存不足', 500);
             }
 
             $order->goods_id = $goods->id;

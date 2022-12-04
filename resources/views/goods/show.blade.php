@@ -13,6 +13,18 @@
                 <div class="card-body">
                     <form action="{{ route('orders.store') }}" method="post">
                         @csrf
+                        @if($errors->any())
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        
+                        @endif
 
                         <h5 class="card-title">{{ $goods->name }}</h5>
                         <p class="card-text">
